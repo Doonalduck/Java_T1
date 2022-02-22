@@ -1,0 +1,59 @@
+//Задание 1
+import java.util.Scanner;
+
+//Дана строка. Проверить, является ли она палиндромом.
+public class Main {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Введите строку: ");
+        String stroka = s.next();
+        boolean palindrom = false;
+        for (int i=0; i<=stroka.length()-1; i++){
+            for (int j=stroka.length()-1; j>=0; j--)
+            {
+                if (stroka.charAt(i) == stroka.charAt(j)){
+                    palindrom = true;
+                }
+                else {
+                    palindrom = false;
+                }
+            }
+        }
+        System.out.println(palindrom);
+        if (palindrom == true) System.out.println("Слово является палиндромом!");
+        if (palindrom == false) System.out.println("Слово не является палиндромом!");
+        }
+    }
+    
+    
+    //Задание 2
+    import java.util.Scanner;
+
+//Дана строка. Найти в ней подстроку-палиндром максимальной длины.
+public class Main {
+    public static void main(String[] args) {
+        Scanner w = new Scanner(System.in);
+        System.out.print("Введите строку: ");
+        String stroka = w.nextLine();
+        String[] Slovo = stroka.split(" ");
+        check(Slovo);
+    }
+    private static void check(String[] Slovo) {
+        int maxDlina = 0;
+        String palindrome=" ";
+        //Смотрим в массиве w (элемент данного массива)
+        for(String w: Slovo){
+                if(isPal(w)&&w.length()>maxDlina){
+                    maxDlina=w.length();
+                    palindrome = w;
+                }
+            }
+            if(palindrome.equals(" ")){
+                System.out.println("В данной строке нет палиндрома");
+            } else
+                System.out.println("Самый длинный палиндром: "+ palindrome);
+        }
+        static boolean isPal(String w){
+            return (w.equals(new StringBuilder(w).reverse().toString()));
+        }
+}
